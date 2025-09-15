@@ -7,5 +7,5 @@ pip install streamlit openai-whisper
 winget install --id Gyan.FFmpeg -e --source winget
 ffmpeg -version
 
-Sau đó chạy file 
+Sau đó chạy file:
 streamlit_app.PY
