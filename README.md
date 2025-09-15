@@ -1,11 +1,21 @@
+## Hướng dẫn chạy
+
 Git clone https://github.com/AnhTuanLHU/translate-voice-to-text
 
-======================================================================
+==========================================================================
+
 Cài thư viện:
-Python --versiom
+```powershell
+python --version
 pip install streamlit openai-whisper
 winget install --id Gyan.FFmpeg -e --source winget
 ffmpeg -version
+```
 
 Sau đó chạy file:
-streamlit_app.PY
+```powershell
+streamlit run .\streamlit_app.PY
+```
+```
+
+- Đã sửa typo `Python --versiom` thành `python --version`.
