@@ -7,7 +7,12 @@ Streamlit GUI cho Vietnamese STT
 import streamlit as st
 import tempfile
 import os
-from test_whisper import VietnameseSTT
+# Ensure test_whisper.py is in the same directory or provide the correct import path
+try:
+    from test_whisper import VietnameseSTT
+except ImportError:
+    st.error("Không tìm thấy module 'test_whisper'. Hãy chắc chắn rằng file 'test_whisper.py' nằm cùng thư mục với ứng dụng này hoặc cài đặt đúng package.")
+    st.stop()
 import time
 
 # Cấu hình trang
