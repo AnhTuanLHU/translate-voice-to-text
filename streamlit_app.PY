@@ -27,7 +27,16 @@ st.title("🎤 Vietnamese Speech-to-Text")
 st.markdown("Chuyển đổi giọng nói tiếng Việt thành văn bản")
 
 # Sidebar
+
 st.sidebar.header("⚙️ Cài đặt")
+
+# Chọn ngôn ngữ chuyển đổi
+language_option = st.sidebar.selectbox(
+    "Chọn ngôn ngữ chuyển đổi:",
+    ["Tiếng Việt", "Tiếng Anh"],
+    index=0,
+    help="Chọn ngôn ngữ đầu ra cho văn bản"
+)
 
 # Chọn model size
 model_size = st.sidebar.selectbox(
@@ -74,9 +83,15 @@ with col1:
                         tmp_file.write(uploaded_file.getvalue())
                         tmp_file_path = tmp_file.name
                     
+                    # Xác định ngôn ngữ đầu ra
+                    if language_option == "Tiếng Việt":
+                        lang = "vi"
+                    else:
+                        lang = "en"
+                    
                     # Transcribe
                     start_time = time.time()
-                    result = stt.transcribe_file(tmp_file_path)
+                    result = stt.transcribe_file(tmp_file_path, language=lang)
                     process_time = time.time() - start_time
                     
                     # Xóa file tạm
@@ -85,7 +100,7 @@ with col1:
                     # Lưu kết quả vào session state
                     st.session_state['transcription_result'] = result
                     st.session_state['process_time'] = process_time
-                    
+                    st.session_state['selected_language'] = language_option
                 except Exception as e:
                     st.error(f"❌ Lỗi: {str(e)}")
 
@@ -95,13 +110,14 @@ with col2:
     if 'transcription_result' in st.session_state:
         result = st.session_state['transcription_result']
         process_time = st.session_state['process_time']
+        selected_language = st.session_state.get('selected_language', 'Tiếng Việt')
         
         # Hiển thị thông tin
         st.info(f"⏱️ Thời gian xử lý: {process_time:.2f}s")
-        st.info(f"🌏 Ngôn ngữ: {result.get('language', 'vi')}")
+        st.info(f"🌏 Ngôn ngữ: {selected_language}")
         
         # Hiển thị văn bản
-        st.subheader("Văn bản:")
+        st.subheader(f"Văn bản ({selected_language}):")
         st.text_area(
             "Kết quả chuyển đổi:",
             value=result['text'],
