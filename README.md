@@ -17,11 +17,6 @@ cd translate-voice-to-text
 # Cài đặt Node.js dependencies
 npm install
 
-# Cài đặt Python dependencies và FFmpeg
-npm run setup
-
-# Chạy ứng dụng
-npm start
 ```
 
 #### **Cách B: Sử dụng pip truyền thống**
@@ -33,7 +28,7 @@ pip install -r requirements.txt
 winget install --id Gyan.FFmpeg -e --source winget
 
 # Chạy ứng dụng
-streamlit run streamlit_app.py
+python -m streamlit run streamlit_app.py
 ```
 
 ### 3. Truy cập ứng dụng
