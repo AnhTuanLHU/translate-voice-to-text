@@ -1,0 +1,38 @@
+{
+  "name": "vietnamese-speech-to-text",
+  "version": "1.0.0",
+  "description": "Vietnamese Speech-to-Text Application using Whisper AI",
+  "main": "streamlit_app.py",
+  "scripts": {
+    "start": "streamlit run streamlit_app.py",
+    "dev": "streamlit run streamlit_app.py --server.runOnSave true",
+    "install-python-deps": "pip install -r requirements.txt",
+    "install-ffmpeg": "winget install --id Gyan.FFmpeg -e --source winget",
+    "setup": "npm run install-python-deps && npm run install-ffmpeg",
+    "check-ffmpeg": "ffmpeg -version"
+  },
+  "keywords": [
+    "speech-to-text",
+    "vietnamese",
+    "whisper",
+    "streamlit",
+    "ai",
+    "transcription"
+  ],
+  "author": "AnhTuanLHU",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/AnhTuanLHU/translate-voice-to-text.git"
+  },
+  "engines": {
+    "node": ">=14.0.0",
+    "python": ">=3.8.0"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  },
+  "dependencies": {
+    "python-shell": "^5.0.0"
+  }
+}
