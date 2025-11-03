@@ -21,9 +21,6 @@ npm install
 
 #### **Cách B: Sử dụng pip truyền thống**
 ```bash
-# Cài đặt Python dependencies
-pip install -r requirements.txt
-
 # Cài đặt FFmpeg (Windows)
 winget install --id Gyan.FFmpeg -e --source winget
 
